@@ -47,6 +47,7 @@ var timer = document.querySelector("#timer");
 
 
 
+
 //start quiz functinon
 function startQuiz () {
     timeInterval = setInterval(countdown,1000);
@@ -77,7 +78,8 @@ function endQuiz () {
     clearInterval(timer)
 }
 
-func
+startQuiz ();
+
 //one function that shows the question 
 
 //one function that checks the answer 
