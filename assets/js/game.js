@@ -36,11 +36,11 @@ var questions = [
 
 var start = document.querySelector ("#start");
 var startButton = document.querySelector ("#start-button");
-var questions = document.querySelector ("#questions");
-var questionsTitle = document.querySelector ("#questions-title");
+var questionsEl = document.querySelector ("#questions");
+var questionsTitle = document.querySelector ("#question-title");
 var answers = document.querySelector ("#answers");
 var finalScore = document.querySelector ("#final-score");
-var time = 75;
+var time = 10;
 var timeInterval;
 var questionIndex = 0 
 var timer = document.querySelector("#timer");
@@ -52,33 +52,45 @@ var timer = document.querySelector("#timer");
 function startQuiz () {
     timeInterval = setInterval(countdown,1000);
     timer.textContent = time;
-    displayQuestions ()
+    start.style.display = "none";
+    displayQuestions ();
 }
 
 function displayQuestions () {
-    var currentQuestion = questions [questionIndex];
-    questionsTitle.textContent = currentQuestion.title;
-    currentQuestion.choices.forEach(function(choice){
-        var choiceButton = document.createElement
-        choiceButton.setAttribute("value", choice);
-        choiceButton.onclick = checksAnswer;
-    })
+     var currentQuestion = questions[questionIndex];
+     questionsTitle.textContent = currentQuestion.title;
+      questions.forEach(function(choices){
+      var choiceButton = document.createElement(choiceButton)
+      choiceButton.setAttribute("value", choices);
+      console.log(choiceButton);
+      answers.textContent = choices;
+     }
+     )}
 
-}
+
 
 function countdown () {
-    time -- 
+    time --;
     timer.textContent = time;
-    if (time <= 0){
+    if (time === 0){
+      clearInterval(timer);
         endQuiz()
     }
 }
 
 function endQuiz () {
-    clearInterval(timer)
+    clearInterval(timeInterval);
+    questionsEl.style.display = "none";
+    finalScore.style.display = "block";
+
 }
 
-startQuiz ();
+startButton.addEventListener("click",startQuiz);
+
+
+if(event.target.matches(answer)) {
+  correct.textContent = ("Correct")
+}
 
 //one function that shows the question 
 

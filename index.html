@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Camp Code Quiz</title>
 
 </head>
 <body>
-    <header id="start">
-        <button id="start-button"> start </button>
-    </header>
-    <div>Time: <span id="timer"> 0 </span></div>
+    <header>
+        <div>
+            <a href="./high-score.html">View High Scores</a>
+        </div>
+        <div>Time: <span id="timer"> 0 </span></div>
 
-    <div id="questions">
-        <h2 id="question-title"></h2>
-        <div id="answers"></div>
-    </div>
-    <div id="final-score"></div>
-    <div>
-        <a href="./high-score.html">View High Scores</a>
-    </div>
+    </header>
+    <main>
+        <div id="start">
+            <h2>Code Camp Quiz</h2>
+            <div> This is a code camp quiz! The quiz will test you on your knowledge of HTML, CSS and Javascript. Once you start the quiz you will have 75 seconds to complete it. Good luck! </div>
+            <button id="start-button"> start </button>
+        </div>
+    
+
+        <div id="questions">
+            <h2 id="question-title"></h2>
+            <div id="answers"></div>
+        </div>
+
+        <div id="final-score">
+            <h2>Final Score</h2>
+            <button id = submit>submit</button>
+        </div>
+    </main>
+  
     <script src="/assets/js/game.js"></script>
 </body>
 </html>
