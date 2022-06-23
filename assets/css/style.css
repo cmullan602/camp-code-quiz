@@ -19,7 +19,7 @@ header {
     font-size: 3.5rem;
 }
 
-h1 {
+h1, h2 {
     box-sizing: 3rem;
     font-size: 3rem;
     color: white;
@@ -60,9 +60,15 @@ main {
     border-radius: 5px;
 }
 
-#final-score {
-    display: none;
+#start-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(6,103,247,0 5);
+    transform: scale(1.02);
+    transition: transform 100ms;
+
 }
+
+
 #question {
     display: flex;
     margin: 0.8rem;
@@ -122,14 +128,23 @@ main {
     text-align: center;
 }
 
-#progressBar {
-    width: 20rem;
-    height: 3rem;
-    border: .2rem solid rgb(33, 203, 33);
-    margin-top: 2rem;
-    border-radius: 50px;
-    overflow: hidden;
+#game {
+    display: block;
 }
+
+#final-score {
+    display: none;
+    text-align: center;
+    color: white;
+    font-size: 2rrem;
+    background-color: black;
+    border-radius: 10px;
+}
+
+#form {
+    padding: 2rem;
+}
+
 @media screen and (max-width: 768px) {
     .choice-container{
         min-width: 40rem;

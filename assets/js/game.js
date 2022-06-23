@@ -2,15 +2,19 @@
 var questionEl = document.querySelector ("#question");
 var choices = Array.from(document.querySelectorAll('.choice-text'));
 var progressText = document.querySelector('#progress-text');
-var scoretext = document.querySelector('#score');
+var scoretext = document.querySelector('.score');
 var progressBarFull = document.querySelector('#progressBarFull');
 var game = document.querySelector('#game');
 var start = document.querySelector ("#start");
 var startButton = document.querySelector ("#start-button");
 var timer = document.querySelector("#timer");
 var choiceContainer = document.querySelectorAll('choice-container');
-
 var finalScore = document.querySelector ("#final-score");
+var nameInput = document.querySelector("#name")
+var emailInput = document.querySelector("#email");
+var submitButton = document.querySelector("#submit");
+var score2 = document.querySelector(".score2")
+
 
 var time = 10;
 var timeInterval;
@@ -21,6 +25,7 @@ var acceptingAnswers = true;
 var score = 0;
 var questionCounter = 0;
 var availableQuestions = [];
+
 
 
 
@@ -80,17 +85,17 @@ function startQuiz () {
     score =0;
     availableQuestions = [...questions]
     getNewQuestion ();
+
 }
 
 function getNewQuestion(){
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-      localStorage.setItem('mostRecentScore',score)
       endQuiz();
     }
 
     questionCounter++
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
-    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
+  
 
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
@@ -164,24 +169,24 @@ function countdown () {
 startQuiz();
 
 function endQuiz () {
+  localStorage.setItem('mostRecentScore',score)
    clearInterval(timeInterval);
-   questionEl.style.display = "none";
-   choiceContainer.style.display = "hidden";
-   game.style.display ="none";
    finalScore.style.display = "block";
-   
+   game.style.display= "none";
+   score2.textContent =localStorage.getItem('mostRecentScore')
+
 
 }
 
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  
+  var user = {
+    name: nameInput.value.trim(),
+    email: emailInput.value.trim(),
+  };
 
-
-//startButton.addEventListener("click",startQuiz);
-
-
-//one function that shows the question 
-
-//one function that checks the answer 
-
-//function to start the quiz and hide the header set attribute display-none 
-
+  localStorage.setItem("user", JSON.stringify(user));
+  
+});
 
