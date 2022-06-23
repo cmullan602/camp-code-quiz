@@ -144,7 +144,7 @@ function incrementScore(num) {
   scoretext.innerText =score
 }
   
-//startQuiz();
+startQuiz();
 
 function countdown () {
     time --;
