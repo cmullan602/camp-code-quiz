@@ -67,7 +67,18 @@
 
         <div id="final-score">
             <h2>Final Score</h2>
-            <button id = submit>submit</button>
+            <form method="POST">
+                <div class="input-group">
+                    <label for="name">Enter Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Scotty"/>
+                </div>
+                <div class="input-group">
+                    <label for="enail">Enter Email:</label>
+                    <input type="text" name="email" id="email" placeholder="scottydoe@gmail.com"/>
+                </div>
+                <div id="msg"></div>
+                <button id = submit>submit</button>
+            </form>
         </div>
     </main>
   

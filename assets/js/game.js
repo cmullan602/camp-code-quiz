@@ -1,5 +1,5 @@
 // list of all questions, choices, and answers
-var question = document.querySelector ("#question");
+var questionEl = document.querySelector ("#question");
 var choices = Array.from(document.querySelectorAll('.choice-text'));
 var progressText = document.querySelector('#progress-text');
 var scoretext = document.querySelector('#score');
@@ -73,7 +73,7 @@ const MAX_QUESTIONS = 5;
 
 
 
-startQuiz = () =>  {
+function startQuiz () {
     timeInterval = setInterval(countdown,1000);
     timer.textContent = time;
     questionCounter =0;
@@ -82,10 +82,10 @@ startQuiz = () =>  {
     getNewQuestion ();
 }
 
-getNewQuestion = () => {
+function getNewQuestion(){
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
       localStorage.setItem('mostRecentScore',score)
-      // endQuiz();
+      endQuiz();
     }
 
     questionCounter++
@@ -94,7 +94,7 @@ getNewQuestion = () => {
 
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
-    question.innerText =currentQuestion.question;
+    questionEl.innerText =currentQuestion.question;
 
     
 
@@ -124,7 +124,10 @@ choices.forEach(choice => {
 
      if(classToApply === 'correct') {
         incrementScore(SCORE_POINTS)
-     }
+      }
+      if(classToApply==='incorrect'){
+        subtractTime(time)
+      }
 
      selectedChoice.parentElement.classList.add(classToApply)
 
@@ -138,13 +141,16 @@ choices.forEach(choice => {
     })
 })
 
+function subtractTime() {
+  time -= 5;
+}
 
 function incrementScore(num) {
   score += num;
   scoretext.innerText =score
 }
   
-startQuiz();
+
 
 function countdown () {
     time --;
@@ -155,12 +161,19 @@ function countdown () {
     }
 }
 
-// function endQuiz () {
-//     clearInterval(timeInterval);
-//     question.style.display = "none";
-//     finalScore.style.display = "block";
+startQuiz();
 
-// }
+function endQuiz () {
+   clearInterval(timeInterval);
+   questionEl.style.display = "none";
+   choiceContainer.style.display = "hidden";
+   game.style.display ="none";
+   finalScore.style.display = "block";
+   
+
+}
+
+
 
 //startButton.addEventListener("click",startQuiz);
 

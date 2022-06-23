@@ -41,10 +41,22 @@ main {
 
 
 #start {
-    width:30rem;
+    width:50rem;
+    height: 30rem;
+    font-size: 3rem;
     background-color: beige;
+    display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 3rem;
+}
+
+#start-btn {
+   color: white;
+    padding: 1.5rem;
+    margin: 2rem;
+    background: #F6490F;
     border-radius: 5px;
 }
 
