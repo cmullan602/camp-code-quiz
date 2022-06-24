@@ -5,7 +5,7 @@ var progressText = document.querySelector('#progress-text');
 var scoretext = document.querySelector('.score');
 var progressBarFull = document.querySelector('#progressBarFull');
 var game = document.querySelector('#game');
-var start = document.querySelector ("#start");
+var start = document.querySelector ("#start-end");
 var startButton = document.querySelector ("#start-button");
 var timer = document.querySelector("#timer");
 var choiceContainer = document.querySelectorAll('choice-container');
@@ -14,6 +14,7 @@ var nameInput = document.querySelector("#name")
 var emailInput = document.querySelector("#email");
 var submitButton = document.querySelector("#submit");
 var score2 = document.querySelector(".score2")
+var timeContent = document.querySelector("#time-content");
 
 
 var time = 10;
@@ -76,11 +77,19 @@ const SCORE_POINTS = 100;
 const MAX_QUESTIONS = 5;
 
 
+startButton.addEventListener("click", function(event){
+  event.preventDefault();
+
+  startQuiz();
+})
 
 
 function startQuiz () {
     timeInterval = setInterval(countdown,1000);
     timer.textContent = time;
+    game.style.display = "block";
+    start.style.display ="none";
+    timeContent.style.display = "block";
     questionCounter =0;
     score =0;
     availableQuestions = [...questions]
@@ -148,6 +157,9 @@ choices.forEach(choice => {
 
 function subtractTime() {
   time -= 5;
+  if(time <= 0){
+    endQuiz()
+  }
 }
 
 function incrementScore(num) {
@@ -160,33 +172,35 @@ function incrementScore(num) {
 function countdown () {
     time --;
     timer.textContent = time;
-    if (time === 0){
+    if (time <= 0){
       clearInterval(timer);
         endQuiz()
     }
 }
 
-startQuiz();
+
 
 function endQuiz () {
-  localStorage.setItem('mostRecentScore',score)
+  score2.textContent = score;
    clearInterval(timeInterval);
    finalScore.style.display = "block";
    game.style.display= "none";
-   score2.textContent =localStorage.getItem('mostRecentScore')
-
+   timeContent.style.display ="none";
 
 }
 
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-  
+  var highScores = JSON.parse(localStorage.getItem("highScores")) || []
   var user = {
     name: nameInput.value.trim(),
-    email: emailInput.value.trim(),
+    score: score,
   };
+  highScores.push(user)
 
-  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+
+  window.location.href="high-score.html"
   
 });
 

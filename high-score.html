@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>High Scores</title>
 </head>
+<header>
+    <!-- <div>
+        <a href="./high-score.html">View High Scores</a>
+    </div>
+    <div id="time-content">Time: <span id="timer"> 0 </span></div> -->
+
+</header>
 <body>
-    <div class="container">
-        <div id="end" class="flex-center flex-column">
-            <h1 id="finalScore">0</h1>
-            <form class="end-form-container">
-                <h2 id="end-test">enter your name below to save your score!</h2>
-                <input type="text" name="name" id="username" placeholder="Enter your Name">
-                <button class="btn" id=saveSoreButton type="submit"
-                onclick="saveHighScore(event)" disabled>Save</button>
-            </form>
-            <a href="/index.html" class="btn">Play Again</a>
+    <main>
+        <div id="start-end">
+            <h1>HIGH SCORES</h1>
+            <ol id="list">
+                
+            </ol>
+            <a href="./index.html" id="play-again">Play Again</a>
+        
         </div>
+    </main>
+    <script src="./high-score.js"></script>
 </body>
 </html>

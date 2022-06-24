@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 62.5%;
+    font-size: 70%;
     font-family: 'poppins', sans-serif;
 }
 
@@ -16,15 +16,19 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 1.5rem;
-    font-size: 3.5rem;
+    font-size: 3rem;
+}
+
+#time-content {
+    display: none;
 }
 
 h1, h2 {
     box-sizing: 3rem;
     font-size: 3rem;
-    color: white;
+    color: black;
     height: 2rem;
-    padding: 2rem;
+    padding: 3rem;
 }
 
 main {
@@ -40,7 +44,7 @@ main {
 
 
 
-#start {
+#start-end {
     width:50rem;
     height: 30rem;
     font-size: 3rem;
@@ -48,21 +52,26 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     border-radius: 5px;
     padding: 3rem;
 }
 
-#start-btn {
-   color: white;
+#start-end div {
+    padding: 1rem;
+}
+
+#start-button, #submit {
+    color: white;
     padding: 1.5rem;
     margin: 2rem;
     background: #F6490F;
     border-radius: 5px;
 }
 
-#start-btn:hover {
+#start-button:hover, #submit:hover, #play-again:hover{
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(6,103,247,0 5);
+    box-shadow: 0 0.4rem 1.4rem 0 red;
     transform: scale(1.02);
     transition: transform 100ms;
 
@@ -89,7 +98,7 @@ main {
 
 .choice-container:hover {
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(6,103,247,0 5);
+    box-shadow: 0 0.4rem 1.4rem 0 blue;
     transform: scale(1.02);
     transition: transform 100ms;
 }
@@ -117,6 +126,7 @@ main {
     display:flex;
     width:100%;
     justify-content: space-between;
+    font-size: 4rem;
 
 }
 
@@ -129,24 +139,53 @@ main {
 }
 
 #game {
-    display: block;
+    display: none;
 }
 
 #final-score {
     display: none;
+    width: 50rem;
+    height: 30rem;
     text-align: center;
-    color: white;
-    font-size: 2rrem;
-    background-color: black;
+    color: black;
+    font-size: 3rem;
+    background-color: beige;
     border-radius: 10px;
 }
 
 #form {
     padding: 2rem;
 }
+.input-group {
+    padding: .5rem
+}
+
+.input-group label {
+    font-size: 2rem;
+}
+
+.input-group input {
+    height: 3rem;
+    width: 20rem;
+}
+
+#play-again {
+    color: white;
+    padding: 1.5rem;
+    margin: 2rem;
+    background: #F6490F;
+    border-radius: 5px;
+}
+
+
 
 @media screen and (max-width: 768px) {
     .choice-container{
         min-width: 40rem;
     }
+    
+    h2 {
+        min-width: 40rem;
+    }
+
 }
