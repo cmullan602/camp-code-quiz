@@ -4,7 +4,7 @@ const MAX_HIGH_SCORES = 5;
 //print high scores function
 function printHighScores () {
     var highScores = JSON.parse(localStorage.getItem("highScores")) || []
-    highScores.sort(function(a,b){
+        highScores.sort(function(a,b){
         return b.score - a.score
     })
     highScores.forEach(element => {
@@ -13,6 +13,7 @@ function printHighScores () {
         highScoresList.appendChild(li)
     });
 }
+
 
 printHighScores()
 
