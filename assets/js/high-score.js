@@ -1,5 +1,7 @@
 var highScoresList = document.querySelector("#list");
+const MAX_HIGH_SCORES = 5;
 
+//print high scores function
 function printHighScores () {
     var highScores = JSON.parse(localStorage.getItem("highScores")) || []
     highScores.sort(function(a,b){

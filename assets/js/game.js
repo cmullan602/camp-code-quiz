@@ -1,4 +1,4 @@
-// list of all questions, choices, and answers
+// dom elements
 var questionEl = document.querySelector ("#question");
 var choices = Array.from(document.querySelectorAll('.choice-text'));
 var progressText = document.querySelector('#progress-text');
@@ -16,11 +16,10 @@ var submitButton = document.querySelector("#submit");
 var score2 = document.querySelector(".score2")
 var timeContent = document.querySelector("#time-content");
 
-
-var time = 10;
+//java elements
+var time = 75;
 var timeInterval;
 var questionIndex = 0 
-
 var currentQuestion = {};
 var acceptingAnswers = true;
 var score = 0;
@@ -28,7 +27,7 @@ var questionCounter = 0;
 var availableQuestions = [];
 
 
-
+//questions array 
 
 var questions = [
     {
@@ -83,7 +82,7 @@ startButton.addEventListener("click", function(event){
   startQuiz();
 })
 
-
+//start quiz function
 function startQuiz () {
     timeInterval = setInterval(countdown,1000);
     timer.textContent = time;
@@ -96,7 +95,7 @@ function startQuiz () {
     getNewQuestion ();
 
 }
-
+//get new question function
 function getNewQuestion(){
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
       endQuiz();
@@ -155,6 +154,7 @@ choices.forEach(choice => {
     })
 })
 
+//subtract time if incorrect function
 function subtractTime() {
   time -= 5;
   if(time <= 0){
@@ -162,13 +162,13 @@ function subtractTime() {
   }
 }
 
+//increment score if correct function
 function incrementScore(num) {
   score += num;
   scoretext.innerText =score
 }
   
-
-
+//countdown function
 function countdown () {
     time --;
     timer.textContent = time;
@@ -176,10 +176,12 @@ function countdown () {
       clearInterval(timer);
         endQuiz()
     }
+    if(time <= 15){
+      timeContent.style.background = "red";
+    }
 }
 
-
-
+//end quiz function
 function endQuiz () {
   score2.textContent = score;
    clearInterval(timeInterval);
@@ -189,6 +191,7 @@ function endQuiz () {
 
 }
 
+//submit score event listener function
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
   var highScores = JSON.parse(localStorage.getItem("highScores")) || []
